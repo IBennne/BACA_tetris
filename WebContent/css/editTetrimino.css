@@ -1,0 +1,21 @@
+@CHARSET "ISO-8859-1";
+
+ 
+/*  * {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}  */
+
+.tableEditTetrimino td {
+	background-color: #80ffff; 
+	background-size: auto;
+	height: 30px;
+	width: 30px;
+	margin: 5px;
+	border: 5px;
+	padding: 5px;
+}
+
+.tableEditTetrimino table {
+	width: auto;
+	margin: 1px auto;
+}
