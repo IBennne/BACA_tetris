@@ -3,8 +3,10 @@ package ascadis.model;
 import java.io.Serializable;
 import java.util.UUID;
 
+import org.springframework.stereotype.Component;
 
 
+@Component
 public class Tetrimino implements Serializable
 {
 	private static final long serialVersionUID = 1L;
