@@ -77,6 +77,14 @@ public class Forme
 		this.blocks = blocks;
 	}
 
+	public Tetrimino getTetrimino() {
+		return tetrimino;
+	}
+
+	public void setTetrimino(Tetrimino tetrimino) {
+		this.tetrimino = tetrimino;
+	}
+
 	
 	
 }
