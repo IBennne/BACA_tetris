@@ -28,7 +28,7 @@
 					
 					<c:forEach var="j" begin="0" end="3" step="1">
 						
-						<td id="${i},${j}"></td>
+						<td id="${i},${j}"> <a href="editBlock?idTetrimino=${tetrimino.id}&x=${i}&y=${j}"/> </td>
 					
 					</c:forEach>
 					
