@@ -8,6 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Repository;
@@ -23,9 +26,10 @@ public class Forme
 	private String id;
 	
 	@Column(name = "FORME_NUMERO")
-	private int numéro;
+	private int numero;
 	
-	@Column(name = "FORME")
+	@ManyToOne
+	@JoinColumn(name="PRO_FOURNISSEUR_ID")
 	private List<Block> blocks;
 	
 	public Forme()
@@ -52,17 +56,17 @@ public class Forme
 	/**
 	 * @return the numéro
 	 */
-	public int getNuméro()
+	public int getNumero()
 	{
-		return numéro;
+		return numero;
 	}
 
 	/**
 	 * @param numéro the numéro to set
 	 */
-	public void setNuméro(int numéro)
+	public void setNumero(int numéro)
 	{
-		this.numéro = numéro;
+		this.numero = numéro;
 	}
 
 	/**
