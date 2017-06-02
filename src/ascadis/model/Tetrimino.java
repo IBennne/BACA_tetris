@@ -6,7 +6,7 @@ import java.util.UUID;
 import javax.persistence.Entity;
 
 
-@Entity
+//@Entity
 public class Tetrimino implements Serializable
 {
 	private static final long serialVersionUID = 1L;
