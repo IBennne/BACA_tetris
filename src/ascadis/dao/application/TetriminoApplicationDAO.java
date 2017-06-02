@@ -20,7 +20,7 @@ public class TetriminoApplicationDAO implements IDAO<Tetrimino, String>
 	
 	@Override
 	public List<Tetrimino> findAll() {
-		return this.em.createQuery("from tetrimino t", Tetrimino.class).getResultList();
+		return this.em.createQuery("from Tetrimino t", Tetrimino.class).getResultList();
 	}
 	
 	
