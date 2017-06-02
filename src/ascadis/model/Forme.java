@@ -2,17 +2,9 @@ package ascadis.model;
 
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
+@Entity
 @Table(name = "forme")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Forme
@@ -20,13 +12,17 @@ public class Forme
 	@Id
 	@Column(name = "FORME_ID", nullable = false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
+	private int id;
 	
 	@Column(name = "FORME_NUMERO")
 	private int numéro;
 	
-	@Column(name = "FORME")
+	@OneToMany(mappedBy="forme")
 	private List<Block> blocks;
+	
+	@ManyToOne
+	@JoinColumn(name="FORME_TETRI_ID")
+	private Tetrimino tetrimino;
 	
 	public Forme()
 	{
@@ -36,7 +32,7 @@ public class Forme
 	/**
 	 * @return the id
 	 */
-	public String getId()
+	public int getId()
 	{
 		return id;
 	}
@@ -44,7 +40,7 @@ public class Forme
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id)
+	public void setId(int id)
 	{
 		this.id = id;
 	}

@@ -1,14 +1,24 @@
 package ascadis.model;
 
-import org.springframework.stereotype.Repository;
+import javax.persistence.*;
 
-@Repository
+@Entity
 public class Block
 {
-	private String id;
+	@Id
+	@Column(name = "BLOCK_ID", nullable = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(name = "BLOCK_POSX", nullable = false)
 	private int positionX;
+	
+	@Column(name = "BLOCK_POSY", nullable = false)
 	private int positionY;
-	private boolean exist = false;
+	
+	@ManyToOne
+	@JoinColumn(name="BLOCK_FORM_ID")
+	private Forme forme;
 	
 	public Block()
 	{
@@ -18,7 +28,7 @@ public class Block
 	/**
 	 * @return the id
 	 */
-	public String getId()
+	public int getId()
 	{
 		return id;
 	}
@@ -26,7 +36,7 @@ public class Block
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(String id)
+	public void setId(int id)
 	{
 		this.id = id;
 	}
@@ -62,23 +72,5 @@ public class Block
 	{
 		this.positionY = positionY;
 	}
-
-	/**
-	 * @return the exist
-	 */
-	public boolean isExist()
-	{
-		return exist;
-	}
-
-	/**
-	 * @param exist the exist to set
-	 */
-	public void setExist(boolean exist)
-	{
-		this.exist = exist;
-	}
-	
-	
 
 }

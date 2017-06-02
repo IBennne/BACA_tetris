@@ -1,9 +1,6 @@
 package ascadis.dao.application;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 

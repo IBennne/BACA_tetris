@@ -6,9 +6,7 @@ import java.util.UUID;
 
 import javax.persistence.*;
 
-import org.springframework.stereotype.Repository;
-
-@Repository
+@Entity
 @Table(name = "tetrimino")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Tetrimino implements Serializable
@@ -26,12 +24,7 @@ public class Tetrimino implements Serializable
 	@Column(name = "TETRI_COULEUR")
 	private String couleur;
 
-	@OneToMany
-	@JoinTable(
-		name="formes",
-		joinColumns=@JoinColumn(name="TETRI_FORMES_ID", referencedColumnName="TETRI_ID"),
-		inverseJoinColumns=@JoinColumn(name="FORME_TETRI_ID", referencedColumnName="FORME_ID")
-	)
+	@OneToMany(mappedBy="tetrimino")
 	private List<Forme> formes;
 	
 	public String getId()
