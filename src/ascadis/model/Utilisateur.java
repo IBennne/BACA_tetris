@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,10 +15,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@DiscriminatorColumn(name="TYPE_UTILISATEUR")
 @Entity
 @Table(name="utilisateur")
-@Inheritance(strategy=InheritanceType.JOINED)
-public class Utilisateur implements Serializable {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+public abstract class Utilisateur implements Serializable {
 	
 	
 	private static final long serialVersionUID = 1L;
