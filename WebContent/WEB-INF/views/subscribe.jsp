@@ -28,6 +28,7 @@
 		<input id="password" type="password" class="validate" name="subscribe_password2"  value="${ subscribe.password2}"/>
 		<label for="subscribe_password2">Verification mot de passe</label>
 	</div>
+	<!--commentaire essai  -->
 	
 	<button class="btn waves-effect waves-light" type="submit">
 		OK <i class="material-icons right">send</i>
