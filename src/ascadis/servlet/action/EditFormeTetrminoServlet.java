@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ascadis.dao.application.TetriminoApplicationDAO;
 import ascadis.model.Forme;
-import ascadis.model.Tetrimino;
-import ascadis.model.Utilisateur;
 import ascadis.servlet.DataAccessServlet;
 
 /**
@@ -34,9 +33,11 @@ public class EditFormeTetrminoServlet extends DataAccessServlet{
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int idTetri = Integer.parseInt(request.getParameter("id_Tetri"));
+		String idTetri = request.getParameter("id_Tetri");
+		Forme forme = new Forme();
 		
-		Forme forme = this.getFormeDAO().save(this.getFormeDAO().find(idTetri));
+		forme.setTetrimino(getTetriminoDAO().find(idTetri));
+		forme = this.getFormeDAO().save(forme);
 	}
 
 	
