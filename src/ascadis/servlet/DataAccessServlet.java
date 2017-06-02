@@ -48,9 +48,6 @@ public abstract class DataAccessServlet extends HttpServlet
 		return this.blockDAO;
 	}
 	
-	protected IDAO<Tetrimino, String> getTetriminoDAO(){
-		return this.getTetriminoDAO();
-	}
 	public void init(ServletConfig config) {
 		try {
 		super.init(config);
