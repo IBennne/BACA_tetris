@@ -2,9 +2,9 @@ package ascadis.model;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
-
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "tetrimino")
@@ -15,7 +15,8 @@ public class Tetrimino implements Serializable
 
 	@Id
 	@Column(name = "TETRI_ID", nullable = false)
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy="uuid")
 	private String id;
 
 	@Column(name = "TETRI_NOM")
@@ -76,8 +77,6 @@ public class Tetrimino implements Serializable
 
 	public Tetrimino()
 	{
-
-		this.id = UUID.randomUUID().toString();
 
 	}
 

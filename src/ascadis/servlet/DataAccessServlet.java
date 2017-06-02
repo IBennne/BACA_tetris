@@ -21,6 +21,10 @@ public abstract class DataAccessServlet extends HttpServlet
 	
 	//@EJB(mappedName="UtilisateurApplicationDAO")
 	@Autowired
+	private IDAO<Tetrimino, String> tetriminoDAO;
+	
+	
+	@Autowired
 	private IDAO<Utilisateur, Integer> utilisateurDAO;
 	@Autowired
 	private IDAO<Forme, Integer> formeDAO;
@@ -28,6 +32,9 @@ public abstract class DataAccessServlet extends HttpServlet
 	private IDAO<Block, Integer> blockDAO;
 	
 	
+	protected IDAO<Tetrimino, String> getTetriminoDAO() {
+		return this.tetriminoDAO;
+	}
 	
 	protected IDAO<Utilisateur, Integer> getUtilisateurDAO() {
 		return this.utilisateurDAO;

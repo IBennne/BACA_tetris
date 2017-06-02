@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "forme")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class Forme
 {
 	@Id
@@ -86,5 +85,16 @@ public class Forme
 	}
 
 	
-	
+	public Block exist(int i, int j)
+	{
+		for ( Block block: this.blocks)
+		{
+			if ( block.getPositionX() == i && block.getPositionY() == j )
+			{
+				return block;
+			}
+		}
+		
+		return null;
+	}	
 }
