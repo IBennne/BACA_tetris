@@ -10,56 +10,54 @@
 
 
 
-		<!-- On active la configuration par annotation -->
+	<!-- On active la configuration par annotation -->
 	<context:annotation-config />
 
 	<!-- On indique quel(s) package(s) sont concernés par cette configuration 
 		par annotation -->
-	<context:component-scan base-package="ascadis,ascadis.dao,ascadis.dao.application,ascadis.listener,ascadis.model,ascadis.security"/>
+	<context:component-scan
+		base-package="ascadis,ascadis.dao,ascadis.dao.application,ascadis.listener,ascadis.model,ascadis.security" />
 
 
 	<!-- On active la configuration Aspect par annotation -->
 	<aop:aspectj-autoproxy />
-	
-	
-	
-	
-	
-	
+
 	<!-- On crée le DataSource -->
-<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	<property name="url" value="jdbc:mysql://localhost:3306/tetris" />
-	<property name="username" value="root" />
-	<property name="password" value="" />
-	<property name="maxActive" value="10" />
-</bean>
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/tetris" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+		<property name="maxActive" value="10" />
+	</bean>
 
-<!-- On crée un entityManagerFactory local à partir de la dataSource -->
-<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-	<property name="dataSource" ref="dataSource" />
-	<property name="packagesToScan" value="ascadis.model" />
+	<!-- On crée un entityManagerFactory local à partir de la dataSource -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="packagesToScan" value="ascadis.model" />
 
-	<!-- On précise le provider ... -->
-	<property name="jpaVendorAdapter">
-		<!-- ... Hibernate ... -->
-		<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-			<!-- ... Et ses options -->
-			<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-			<property name="showSql" value="true" />
-			<property name="generateDdl" value="true" />
-		</bean>
-	</property>
-</bean>
+		<!-- On précise le provider ... -->
+		<property name="jpaVendorAdapter">
+			<!-- ... Hibernate ... -->
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<!-- ... Et ses options -->
+				<property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+				<property name="showSql" value="true" />
+				<property name="generateDdl" value="true" />
+			</bean>
+		</property>
+	</bean>
 
-<!-- On crée le transactionManager pour JPA avec entityManagerFactory -->
-<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-	<property name="entityManagerFactory" ref="entityManagerFactory" />
-</bean>
+	<!-- On crée le transactionManager pour JPA avec entityManagerFactory -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
 
-<!-- On active les annotations @Transactional avec transactionManager -->
-<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- On active les annotations @Transactional avec transactionManager -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
-<!-- On active la translation d'exception -->
-<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	<!-- On active la translation d'exception -->
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 </beans>

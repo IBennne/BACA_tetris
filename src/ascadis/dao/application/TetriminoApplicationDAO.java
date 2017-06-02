@@ -1,46 +1,47 @@
 package ascadis.dao.application;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
 import ascadis.dao.IDAO;
 import ascadis.model.Tetrimino;
-import ascadis.model.Utilisateur;
 
+@Repository("tetriminoDAO")
+@Transactional
 public class TetriminoApplicationDAO implements IDAO<Tetrimino, String>
 {
-	private Map<String, Tetrimino> tetriminos = new HashMap<String, Tetrimino>();
+	@PersistenceContext
+	EntityManager em;
 	
 	
 	@Override
 	public List<Tetrimino> findAll() {
-		return new ArrayList<>(tetriminos.values());
+		return this.em.createQuery("from tetrimino t", Tetrimino.class).getResultList();
 	}
 	
 	
 	@Override
 	public Tetrimino find(String id) {
-		return tetriminos.get(id);
+		return this.em.find(Tetrimino.class, id);
 	}
 	
 	
 	@Override
 	public Tetrimino save(Tetrimino tetrimino) {
-		return tetriminos.put(tetrimino.getId(), tetrimino);
+		return this.em.merge(tetrimino);
 	}
 	
 	
 	@Override
 	public void delete(Tetrimino tetrimino) {
-		tetriminos.remove(tetrimino.getId());
+		this.em.remove(tetrimino);
 	}
 
-
-	@Override
-	public Utilisateur find(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
