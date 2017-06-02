@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import ascadis.dao.IDAO;
+import ascadis.model.Block;
+import ascadis.model.Forme;
 import ascadis.model.Tetrimino;
 import ascadis.model.Utilisateur;
 
@@ -20,7 +22,10 @@ public abstract class DataAccessServlet extends HttpServlet
 	//@EJB(mappedName="UtilisateurApplicationDAO")
 	@Autowired
 	private IDAO<Utilisateur, Integer> utilisateurDAO;
-	
+	@Autowired
+	private IDAO<Forme, Integer> formeDAO;
+	@Autowired
+	private IDAO<Block, Integer> blockDAO;
 	
 	protected IDAO<Tetrimino, String> getTetriminoDAO() {
 		return (IDAO<Tetrimino, String>) this.getServletContext().getAttribute("tetriminoDAO");
@@ -30,8 +35,13 @@ public abstract class DataAccessServlet extends HttpServlet
 		return this.utilisateurDAO;
 	}
 	
+	protected IDAO<Forme, Integer> getFormeDAO(){
+		return this.formeDAO;
+	}
 	
-	
+	protected IDAO<Block, Integer> getBlockDAO(){
+		return this.blockDAO;
+	}
 	
 	public void init(ServletConfig config) {
 		try {
