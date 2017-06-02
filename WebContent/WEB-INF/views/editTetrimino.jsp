@@ -25,13 +25,14 @@
 			<c:forEach var="i" begin="0" end="3" step="1">
 
 				<tr>
-					
+
 					<c:forEach var="j" begin="0" end="3" step="1">
-						
-						<td id="${i},${j}"> <a href="editBlock?idTetrimino=${tetrimino.id}&x=${i}&y=${j}"/> </td>
-					
+
+						<td id="${i},${j}"><a
+							href="editBlock?idTetrimino=${tetrimino.id}&x=${i}&y=${j}" /></td>
+
 					</c:forEach>
-					
+
 				</tr>
 
 			</c:forEach>
@@ -39,6 +40,11 @@
 		</table>
 	</div>
 
+	<div class="fixed-action-btn">
+		<a href="editTetrimino" class="btn-floating btn-large red"> <i
+			class="large material-icons">add</i>
+		</a>
+	</div>
 
 	<button class="btn waves-effect waves-light" type="submit">
 		Valider <i class="material-icons right">send</i>

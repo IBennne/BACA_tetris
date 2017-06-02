@@ -7,35 +7,36 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+import ascadis.dao.IDAO;
+import ascadis.model.Tetrimino;
+
 /**
  * Servlet implementation class blockTetriminoServlet
  */
 @WebServlet("/block")
 public class blockTetriminoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public blockTetriminoServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	
+	@Autowired
+	@Qualifier("tetriminoApplicationDAO")
+	IDAO<Tetrimino,String> tetrimino;
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Tetrimino t = this.tetrimino.find(request.getParameter("idTetrimino"));
+		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

@@ -30,7 +30,7 @@ public class UtilisateurApplicationDAO implements IDAO<Utilisateur, Integer> {
     }
 
     @Override
-    public Utilisateur find(int id) {
+    public Utilisateur find(Integer id) {
     	return this.em.find(Utilisateur.class, id);
     }
 
@@ -44,11 +44,6 @@ public class UtilisateurApplicationDAO implements IDAO<Utilisateur, Integer> {
     	this.em.remove(utilisateur);
     }
 
-	@Override
-	public Tetrimino find(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 }
