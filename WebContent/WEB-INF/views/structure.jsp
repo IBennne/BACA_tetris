@@ -25,5 +25,6 @@
 		</div>
 		
 		<script type="text/javascript" src="js/materialize.min.js"></script>
+		<script type="text/javascript" src="js/editTetrimino.js"></script>
 	</body>
 </html>

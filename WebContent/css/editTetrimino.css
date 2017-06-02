@@ -6,12 +6,16 @@
 }  */
 
 .tableEditTetrimino td {
-	background-color: #00e6e6; 
+	background-color: /*#26a69a*/#00e1e1; 
 	background-size: auto;
 	height: 30px;
 	width: 30px;
 	font-size: 0px;
 	padding: 0px;
+}
+
+.tableEditTetrimino tr td{
+	color: ;
 }
 
 .tableEditTetrimino table {
